@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_night/utils/constants.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+//import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:movie_night/widgets/category_selector.dart';
 
 final List<String> imgList = [
@@ -69,6 +71,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _current = 0;
+
   List<String> _categories = [
     "Action",
     "Anim",
@@ -81,28 +84,62 @@ class _HomePageState extends State<HomePage> {
   ];
   @override
   Widget build(BuildContext context) {
+    Size _screenSize = MediaQuery.of(context).size;
     return Container(
       color: kMainDarkColor,
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
+      width: _screenSize.width,
+      height: _screenSize.height,
       child: Column(
         children: <Widget>[
-          CarouselSlider(
-            items: child,
-            options: CarouselOptions(
-              autoPlayAnimationDuration: Duration(milliseconds: 2000),
-              autoPlay: true,
-              enlargeCenterPage: true,
-              viewportFraction: 0.7,
-              aspectRatio: 3.0,
-              autoPlayCurve: Curves.fastOutSlowIn,
-              onPageChanged: (index, reason) {
-                setState(() {
-                  _current = index;
-                });
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 0, vertical: 5.0),
+            height: _screenSize.height / 5.5,
+            child: Swiper(
+              fade: 0.2,
+              autoplay: true,
+              itemBuilder: (BuildContext context, int index) {
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(7.0),
+//                  child: Stack(
+//                    alignment: Alignment.bottomLeft,
+//                    children: <Widget>[
+//                      Image.network(
+//                        imgList[index],
+//                        fit: BoxFit.fill,
+//                      ),
+//                      Text(
+//                        "Movie Name",
+//                        style: TextStyle(color: Colors.white),
+//                      ),
+//                    ],
+//
+                  child: Image.network(
+                    imgList[index],
+                    fit: BoxFit.fill,
+                  ),
+                );
               },
+              itemCount: imgList.length,
+              viewportFraction: 0.75,
+              scale: 0.9,
             ),
           ),
+//          CarouselSlider(
+//            items: child,
+//            options: CarouselOptions(
+//              autoPlayAnimationDuration: Duration(milliseconds: 2000),
+//              autoPlay: true,
+//              enlargeCenterPage: true,
+//              viewportFraction: 0.7,
+//              aspectRatio: 3.0,
+//              autoPlayCurve: Curves.fastOutSlowIn,
+//              onPageChanged: (index, reason) {
+//                setState(() {
+//                  _current = index;
+//                });
+//              },
+//            ),
+//          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: map<Widget>(

@@ -34,16 +34,13 @@ class _CategorySelectorState extends State<CategorySelector> {
                 selectedIndex = index;
               });
             },
-            child: AnimatedContainer(
-              //width: index == selectedIndex ?,
+            child: Container(
               padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(10),
                 color:
                     index == selectedIndex ? kGoldInkColor : Colors.transparent,
               ),
-              duration: Duration(milliseconds: 500),
-              curve: Curves.easeInBack,
               child: Text(
                 widget.categories[index],
                 style: TextStyle(
