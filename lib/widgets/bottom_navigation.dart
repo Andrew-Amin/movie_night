@@ -19,7 +19,6 @@ class _AppNavigationState extends State<AppNavigation> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
@@ -56,7 +55,6 @@ class _AppNavigationState extends State<AppNavigation> {
         animationDuration: Duration(milliseconds: 200),
         onTap: onTabTapped,
         index: _currentIndex,
-
       ),
     );
   }

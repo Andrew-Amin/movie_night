@@ -23,7 +23,7 @@ class _CategorySelectorState extends State<CategorySelector> {
   Widget build(BuildContext context) {
     return Container(
       height: 30,
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.all(7.0),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: widget.categories.length,

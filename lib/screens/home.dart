@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_night/utils/constants.dart';
-//import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:movie_night/widgets/category_selector.dart';
+import 'package:movie_night/widgets/category_element.dart';
 
 final List<String> imgList = [
   'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
@@ -85,83 +85,108 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Size _screenSize = MediaQuery.of(context).size;
-    return Container(
-      color: kMainDarkColor,
-      width: _screenSize.width,
-      height: _screenSize.height,
-      child: Column(
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 0, vertical: 5.0),
-            height: _screenSize.height / 5.5,
-            child: Swiper(
-              fade: 0.2,
-              autoplay: true,
-              itemBuilder: (BuildContext context, int index) {
-                return ClipRRect(
-                  borderRadius: BorderRadius.circular(7.0),
-//                  child: Stack(
-//                    alignment: Alignment.bottomLeft,
-//                    children: <Widget>[
-//                      Image.network(
-//                        imgList[index],
-//                        fit: BoxFit.fill,
-//                      ),
-//                      Text(
-//                        "Movie Name",
-//                        style: TextStyle(color: Colors.white),
-//                      ),
-//                    ],
-//
-                  child: Image.network(
-                    imgList[index],
-                    fit: BoxFit.fill,
+    return ListView(
+      children: <Widget>[
+        Container(
+          color: kMainDarkColor,
+          width: _screenSize.width,
+          height: _screenSize.height,
+          child: Column(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 0, vertical: 5.0),
+                height: _screenSize.height / 5.5,
+                child: Swiper(
+                    duration: 1500,
+                    fade: 0.1,
+                    autoplay: true,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ClipRRect(
+                          borderRadius: BorderRadius.circular(7.0),
+                          child: Stack(
+                            fit: StackFit.expand,
+                            children: <Widget>[
+                              Image.network(
+                                imgList[index],
+                                fit: BoxFit.fill,
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                left: 0,
+                                child: Text(
+                                  "movie#$index",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 22.0,
+                                      backgroundColor: kAccentColor),
+                                ),
+                              ),
+                            ],
+                          ));
+                    },
+                    itemCount: imgList.length,
+                    viewportFraction: 0.75,
+                    scale: 0.9,
+                    onIndexChanged: (index) {
+                      setState(() {
+                        _current = index;
+                      });
+                    }),
+              ),
+              SizedBox(
+                height: _screenSize.height * 0.030,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: map<Widget>(
+                    imgList,
+                    (index, url) {
+                      return AnimatedContainer(
+                        duration: Duration(milliseconds: 500),
+                        width: _current == index ? 9.0 : 6.0,
+                        height: _current == index ? 9.0 : 6.0,
+                        margin: EdgeInsets.symmetric(
+                            vertical: 5.0, horizontal: 2.0),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _current == index
+                              ? kGoldInkColor
+                              : kSecondLightColor,
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-              itemCount: imgList.length,
-              viewportFraction: 0.75,
-              scale: 0.9,
-            ),
-          ),
-//          CarouselSlider(
-//            items: child,
-//            options: CarouselOptions(
-//              autoPlayAnimationDuration: Duration(milliseconds: 2000),
-//              autoPlay: true,
-//              enlargeCenterPage: true,
-//              viewportFraction: 0.7,
-//              aspectRatio: 3.0,
-//              autoPlayCurve: Curves.fastOutSlowIn,
-//              onPageChanged: (index, reason) {
-//                setState(() {
-//                  _current = index;
-//                });
-//              },
-//            ),
-//          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: map<Widget>(
-              imgList,
-              (index, url) {
-                return AnimatedContainer(
-                  duration: Duration(milliseconds: 500),
-                  width: _current == index ? 9.0 : 6.0,
-                  height: _current == index ? 9.0 : 6.0,
-                  margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 2.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color:
-                        _current == index ? kGoldInkColor : kSecondLightColor,
+                ),
+              ),
+              CategorySelector(categories: _categories),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Popular',
+                  style: TextStyle(
+                      fontSize: 25.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              CategoryElement(),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 3),
+                  child: Text(
+                    'TopRated',
+                    style: TextStyle(
+                        fontSize: 25.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   ),
-                );
-              },
-            ),
+                ),
+              ),
+              CategoryElement(),
+            ],
           ),
-          CategorySelector(categories: _categories),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
