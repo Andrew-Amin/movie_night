@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
+
 import 'package:movie_night/utils/constants.dart';
-import 'dart:convert';
 
 class CategorySelector extends StatefulWidget {
   CategorySelector({@required this.categories});
   final List<String> categories;
   @override
   _CategorySelectorState createState() => _CategorySelectorState();
-}
-
-dynamic getCategories() async {
-  Response _response = await Dio().get(kMovieGenre);
-  if (_response.statusCode == 200) return jsonDecode(_response.data);
-  return null;
 }
 
 class _CategorySelectorState extends State<CategorySelector> {
