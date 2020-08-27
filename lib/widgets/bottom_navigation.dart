@@ -50,7 +50,7 @@ class _AppNavigationState extends State<AppNavigation> {
         color: kMainLightColor,
         buttonBackgroundColor: kMainLightColor,
         backgroundColor: kMainDarkColor,
-        height: 55.0,
+        height: 50.0,
         animationCurve: Curves.bounceInOut,
         animationDuration: Duration(milliseconds: 200),
         onTap: onTabTapped,

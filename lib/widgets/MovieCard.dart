@@ -1,21 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:movie_night/utils/constants.dart';
 
-class MovieCard extends StatelessWidget {
+class MovieCard extends StatefulWidget {
   final String imageUrl;
+  const MovieCard({
+    @required this.imageUrl,
+  });
+  @override
+  _MovieCardState createState() => _MovieCardState();
+}
 
-  const MovieCard({@required this.imageUrl});
+class _MovieCardState extends State<MovieCard> {
+  IconData _likeIcon = Icons.favorite_border;
+  Color _likeIconColor = kSecondLightColor;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
-      width: 150,
+      alignment: Alignment.topRight,
+      height: 200,
+      width: 200,
+      padding: EdgeInsets.all(7.0),
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            _likeIcon = _likeIcon == Icons.favorite_border
+                ? Icons.favorite
+                : Icons.favorite_border;
+            _likeIconColor = _likeIconColor == kSecondLightColor
+                ? kAccentColor
+                : kSecondLightColor;
+            //TODO:Post favorite show
+          });
+        },
+        child: Icon(
+          _likeIcon,
+          color: _likeIconColor,
+          size: 35,
+        ),
+      ),
       margin: EdgeInsets.symmetric(horizontal: 5.0, vertical: 3.0),
       decoration: BoxDecoration(
         color: kMainLightColor,
         borderRadius: BorderRadius.circular(7.0),
         image: DecorationImage(
-          image: NetworkImage(imageUrl),
+          image: NetworkImage(widget.imageUrl),
           fit: BoxFit.cover,
         ),
       ),

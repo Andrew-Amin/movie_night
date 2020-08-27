@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_night/utils/constants.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:movie_night/widgets/MovieCard.dart';
 import 'package:movie_night/widgets/category_selector.dart';
 import 'package:movie_night/widgets/category_element.dart';
 
@@ -85,108 +86,139 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Size _screenSize = MediaQuery.of(context).size;
-    return ListView(
-      children: <Widget>[
-        Container(
-          color: kMainDarkColor,
-          width: _screenSize.width,
-          height: _screenSize.height,
-          child: Column(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 0, vertical: 5.0),
-                height: _screenSize.height / 5.5,
-                child: Swiper(
-                    duration: 1500,
-                    fade: 0.1,
-                    autoplay: true,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ClipRRect(
-                          borderRadius: BorderRadius.circular(7.0),
-                          child: Stack(
-                            fit: StackFit.expand,
-                            children: <Widget>[
-                              Image.network(
-                                imgList[index],
-                                fit: BoxFit.fill,
+    return Container(
+      color: kMainDarkColor,
+      width: _screenSize.width,
+      height: _screenSize.height,
+      child: Column(
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 0, vertical: 5.0),
+            height: _screenSize.height / 4,
+            child: Swiper(
+                duration: 1500,
+                fade: 0.1,
+                autoplay: true,
+                itemBuilder: (BuildContext context, int index) {
+                  return ClipRRect(
+                      borderRadius: BorderRadius.circular(7.0),
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: <Widget>[
+                          Image.network(
+                            imgList[index],
+                            fit: BoxFit.fill,
+                          ),
+                          Positioned(
+                            bottom: 0,
+                            left: 0,
+                            child: Text(
+                              "movie#$index",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22.0,
                               ),
-                              Positioned(
-                                bottom: 0,
-                                left: 0,
-                                child: Text(
-                                  "movie#$index",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 22.0,
-                                      backgroundColor: kAccentColor),
-                                ),
-                              ),
-                            ],
-                          ));
-                    },
-                    itemCount: imgList.length,
-                    viewportFraction: 0.75,
-                    scale: 0.9,
-                    onIndexChanged: (index) {
-                      setState(() {
-                        _current = index;
-                      });
-                    }),
-              ),
-              SizedBox(
-                height: _screenSize.height * 0.030,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: map<Widget>(
-                    imgList,
-                    (index, url) {
-                      return AnimatedContainer(
-                        duration: Duration(milliseconds: 500),
-                        width: _current == index ? 9.0 : 6.0,
-                        height: _current == index ? 9.0 : 6.0,
-                        margin: EdgeInsets.symmetric(
-                            vertical: 5.0, horizontal: 2.0),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: _current == index
-                              ? kGoldInkColor
-                              : kSecondLightColor,
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-              CategorySelector(categories: _categories),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Popular',
-                  style: TextStyle(
-                      fontSize: 25.0,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              CategoryElement(),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 3),
-                  child: Text(
-                    'TopRated',
-                    style: TextStyle(
-                        fontSize: 25.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-              CategoryElement(),
-            ],
+                            ),
+                          ),
+                        ],
+                      ));
+                },
+                itemCount: imgList.length,
+                viewportFraction: 0.75,
+                scale: 0.9,
+                onIndexChanged: (index) {
+                  setState(() {
+                    _current = index;
+                  });
+                }),
           ),
-        ),
-      ],
+          SizedBox(
+            height: _screenSize.height * 0.030,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: map<Widget>(
+                imgList,
+                (index, url) {
+                  return AnimatedContainer(
+                    duration: Duration(milliseconds: 500),
+                    width: _current == index ? 9.0 : 6.0,
+                    height: _current == index ? 9.0 : 6.0,
+                    margin:
+                        EdgeInsets.symmetric(vertical: 5.0, horizontal: 2.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color:
+                          _current == index ? kGoldInkColor : kSecondLightColor,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+          CategorySelector(categories: _categories),
+//            Padding(
+//              padding: const EdgeInsets.only(left: 10.0),
+//              child: Align(
+//                alignment: Alignment.centerLeft,
+//                child: Text(
+//                  'Popular',
+//                  style: TextStyle(
+//                      fontSize: 25.0,
+//                      color: Colors.white,
+//                      fontWeight: FontWeight.bold),
+//                ),
+//              ),
+//
+          Expanded(
+            child: GridView.extent(
+              shrinkWrap: true,
+              maxCrossAxisExtent: _screenSize.width / 2,
+              children: <Widget>[
+                MovieCard(
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
+                ),
+                MovieCard(
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
+                ),
+                MovieCard(
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
+                ),
+                MovieCard(
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
+                ),
+                MovieCard(
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
+                ),
+                MovieCard(
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
+                ),
+                MovieCard(
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
+                ),
+                MovieCard(
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
+                ),
+                MovieCard(
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
+                ),
+                MovieCard(
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
