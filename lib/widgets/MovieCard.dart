@@ -38,7 +38,6 @@ class _MovieCardState extends State<MovieCard> {
           size: 35,
         ),
       ),
-      margin: EdgeInsets.symmetric(horizontal: 5.0, vertical: 3.0),
       decoration: BoxDecoration(
         color: kMainLightColor,
         borderRadius: BorderRadius.circular(7.0),
