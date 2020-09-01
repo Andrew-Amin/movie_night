@@ -35,11 +35,11 @@ class _MovieCardState extends State<MovieCard> {
         child: Icon(
           _likeIcon,
           color: _likeIconColor,
-          size: 35,
+          size: 30,
         ),
       ),
       decoration: BoxDecoration(
-        color: kMainLightColor,
+        color: kSecondDarkColor,
         borderRadius: BorderRadius.circular(7.0),
         image: DecorationImage(
           image: NetworkImage(widget.imageUrl),

@@ -14,6 +14,7 @@ dependencies:
   curved_navigation_bar: ^0.3.3
   dio: ^3.0.10
   flutter_swiper: ^1.1.6
+  shared_preferences: ^0.5.10
 
 
 dev_dependencies:
@@ -28,17 +29,19 @@ flutter:
   assets:
     - images/
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
+  fonts:
+    - family: Teko_Bold
+      fonts:
+        - asset: assets/Teko-Bold.ttf
 
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
+    - family: Teko_Medium
+      fonts:
+        - asset: assets/Teko-Medium.ttf
 
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
+    - family: Teko_Regular
+      fonts:
+        - asset: assets/Teko-Regular.ttf
+
   # fonts:
   #   - family: Schyler
   #     fonts:

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/Other/Desktop/projects/movie_night/lib/widgets/bottom_navigation.dart';
-import 'screens/home.dart';
+import 'widgets/bottom_navigation.dart';
+import 'screens/movies.dart';
 import 'screens/favorite.dart';
 import 'screens/search.dart';
-import 'screens/top.dart';
+import 'screens/tv_shows.dart';
+import 'screens/details.dart';
 
 void main() => runApp(App());
 
 class App extends StatelessWidget {
   final List<Widget> screens = [
-    HomePage(),
-    TopRatedPage(),
-    SearchPage(),
+    MoviesPage(),
+    TvShowsPage(),
+    DetailsPage(),
     FavoritePage()
   ];
   @override

@@ -40,6 +40,15 @@ class ApiController {
       print(e.toString());
     }
   }
+
+  dynamic getLastMovies() async {
+    try {
+      Response _response = await Dio().get(kLastMovies);
+      if (_response.statusCode == 200) return jsonDecode(_response.data);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 }
 
 //static dynamic getPopularMovies() async {

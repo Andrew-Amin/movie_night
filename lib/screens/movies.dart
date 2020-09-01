@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_night/utils/constants.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:movie_night/widgets/MovieCard.dart';
+import 'package:movie_night/widgets/MoviesSwiper.dart';
 import 'package:movie_night/widgets/category_selector.dart';
-import 'package:movie_night/widgets/category_element.dart';
 
 final List<String> imgList = [
   'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
@@ -61,18 +60,17 @@ List<T> map<T>(List list, Function handler) {
   for (var i = 0; i < list.length; i++) {
     result.add(handler(i, list[i]));
   }
-
   return result;
 }
 
-class HomePage extends StatefulWidget {
+class MoviesPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _MoviesPageState createState() => _MoviesPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MoviesPageState extends State<MoviesPage> {
   int _current = 0;
-
+  String _selectedCategory = 'test';
   List<String> _categories = [
     "Action",
     "Anim",
@@ -86,6 +84,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Size _screenSize = MediaQuery.of(context).size;
+    Orientation _screenOrientation = MediaQuery.of(context).orientation;
     return Container(
       color: kMainDarkColor,
       child: CustomScrollView(
@@ -97,47 +96,47 @@ class _HomePageState extends State<HomePage> {
                   color: kMainDarkColor,
                   width: _screenSize.width,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(left: 10.0),
+                        child: Row(
+                          children: <Widget>[
+                            Text(
+                              'Movies',
+                              style: TextStyle(
+                                  color: kMainLightColor.withOpacity(0.8),
+                                  fontSize: 35.0,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Teko_Bold',
+                                  letterSpacing: 1.2),
+                            ),
+                            Text(
+                              '/ $_selectedCategory',
+                              style: TextStyle(
+                                  color: kMainLightColor.withOpacity(0.7),
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Teko_Bold',
+                                  letterSpacing: 1.2),
+                            ),
+                          ],
+                        ),
+                      ),
                       Container(
                         margin:
                             EdgeInsets.symmetric(horizontal: 0, vertical: 5.0),
-                        height: _screenSize.height / 4,
-                        child: Swiper(
-                            duration: 1500,
-                            fade: 0.1,
-                            autoplay: true,
-                            itemBuilder: (context, int index) {
-                              return ClipRRect(
-                                  borderRadius: BorderRadius.circular(7.0),
-                                  child: Stack(
-                                    fit: StackFit.expand,
-                                    children: <Widget>[
-                                      Image.network(
-                                        imgList[index],
-                                        fit: BoxFit.fill,
-                                      ),
-                                      Positioned(
-                                        bottom: 0,
-                                        left: 0,
-                                        child: Text(
-                                          "movie#$index",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 22.0,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ));
-                            },
-                            itemCount: imgList.length,
-                            viewportFraction: 0.75,
-                            scale: 0.9,
-                            onIndexChanged: (index) {
-                              setState(() {
-                                _current = index;
-                              });
-                            }),
+                        height: _screenOrientation == Orientation.portrait
+                            ? _screenSize.height / 4
+                            : _screenSize.height / 2,
+                        child: MoviesSwiper(
+                          imgList: imgList,
+                          onIndexChange: (index) {
+                            setState(() {
+                              _current = index;
+                            });
+                          },
+                        ),
                       ),
                       SizedBox(
                         height: _screenSize.height * 0.030,
@@ -163,7 +162,15 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      CategorySelector(categories: _categories),
+                      CategorySelector(
+                        categories: _categories,
+                        height: 50,
+                        onClick: (selectedCategory) {
+                          setState(() {
+                            _selectedCategory = selectedCategory;
+                          });
+                        },
+                      ),
                     ],
                   ),
                 );
@@ -217,6 +224,20 @@ class _HomePageState extends State<HomePage> {
                     'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
               ),
             ],
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Column(
+                  children: <Widget>[
+                    Image.asset(
+                      'images/logo.png',
+                    ),
+                  ],
+                );
+              },
+              childCount: 1,
+            ),
           ),
         ],
       ),

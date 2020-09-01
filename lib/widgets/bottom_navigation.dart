@@ -5,7 +5,6 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 class AppNavigation extends StatefulWidget {
   AppNavigation({this.screens});
 
-  static const Tag = "Tabbar";
   final List<Widget> screens;
   @override
   State<StatefulWidget> createState() {
@@ -20,41 +19,46 @@ class _AppNavigationState extends State<AppNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: widget.screens,
-      ),
-      bottomNavigationBar: CurvedNavigationBar(
-        items: <Widget>[
-          Icon(
-            Icons.home,
-            size: 30,
-            color: kGoldInkColor,
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        children: <Widget>[
+          IndexedStack(
+            index: _currentIndex,
+            children: widget.screens,
           ),
-          Icon(
-            Icons.star,
-            size: 30,
-            color: kGoldInkColor,
-          ),
-          Icon(
-            Icons.search,
-            size: 30,
-            color: kGoldInkColor,
-          ),
-          Icon(
-            Icons.favorite,
-            size: 30,
-            color: kGoldInkColor,
+          CurvedNavigationBar(
+            items: <Widget>[
+              Icon(
+                Icons.movie_filter,
+                size: 30,
+                color: kGoldInkColor,
+              ),
+              Icon(
+                Icons.live_tv,
+                size: 30,
+                color: kGoldInkColor,
+              ),
+              Icon(
+                Icons.search,
+                size: 30,
+                color: kGoldInkColor,
+              ),
+              Icon(
+                Icons.favorite_border,
+                size: 30,
+                color: kGoldInkColor,
+              ),
+            ],
+            color: kSecondDarkColor,
+            buttonBackgroundColor: kSecondDarkColor,
+            backgroundColor: Colors.transparent,
+            height: 55.0,
+            animationCurve: Curves.bounceInOut,
+            animationDuration: Duration(milliseconds: 200),
+            onTap: onTabTapped,
+            index: _currentIndex,
           ),
         ],
-        color: kMainLightColor,
-        buttonBackgroundColor: kMainLightColor,
-        backgroundColor: kMainDarkColor,
-        height: 50.0,
-        animationCurve: Curves.bounceInOut,
-        animationDuration: Duration(milliseconds: 200),
-        onTap: onTabTapped,
-        index: _currentIndex,
       ),
     );
   }
