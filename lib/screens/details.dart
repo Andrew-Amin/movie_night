@@ -58,7 +58,7 @@ class DetailsPage extends StatelessWidget {
                 bottom: -30,
                 right: 0,
                 child: Material(
-                  elevation: 20.0,
+                  elevation: 10.0,
                   child: Container(
                     width: _screenSize.width * 0.9,
                     height: 75,
@@ -140,93 +140,96 @@ class DetailsPage extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(10.0, 50.0, 10.0, 10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            padding: EdgeInsets.fromLTRB(8, 50, 8, 8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          'Movie Name',
+                          style: TextStyle(
+                              color: kMainLightColor,
+                              fontFamily: 'Teko_Bold',
+                              fontSize: 46.0),
+                        ),
+                        Text(
+                          '2020 \t PG-13 \t 2h32min',
+                          style: TextStyle(
+                              color: Colors.white54,
+                              fontFamily: 'Teko_Medium',
+                              fontSize: 20.0),
+                        ),
+                      ],
+                    ),
+                    Icon(
+                      Icons.favorite,
+                      color: kAccentColor,
+                      size: 40.0,
+                    )
+                  ],
+                ),
+                Container(
+                  child: Text(
+                    'Action',
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 18.0,
+                      fontFamily: 'Teko_Regular',
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    border: Border.all(color: kGoldInkColor, width: 2),
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 2, horizontal: 10.0),
+                  margin:
+                      EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Movie Name',
+                      'Plot Summary',
                       style: TextStyle(
-                          color: kMainLightColor,
-                          fontFamily: 'Teko_Bold',
-                          fontSize: 46.0),
+                        color: kMainLightColor,
+                        fontSize: 22.0,
+                        fontFamily: 'Teko_Bold',
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.0,
                     ),
                     Text(
-                      '2020 \t PG-13 \t 2h32min',
+                      'Battle-hardened O’Hara leads a lively mercenary team of soldiers on a daring mission: rescue hostages from their captors in remote Africa. But as the mission goes awry and the team is stranded, O’Hara’s squad must face a bloody, brutal encounter with a gang of rebels.',
                       style: TextStyle(
-                          color: Colors.white54,
-                          fontFamily: 'Teko_Medium',
-                          fontSize: 20.0),
+                        color: kSecondLightColor,
+                        fontSize: 16.0,
+                        fontFamily: 'Teko_Regular',
+                      ),
                     ),
                   ],
                 ),
-                Icon(
-                  Icons.favorite,
-                  color: kAccentColor,
-                  size: 40.0,
-                )
-              ],
-            ),
-          ),
-          Container(
-            child: Text(
-              'Action',
-              style: TextStyle(
-                color: Colors.white70,
-                fontSize: 20.0,
-                fontFamily: 'Teko_Regular',
-              ),
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.0),
-              border: Border.all(
-                color: kGoldInkColor,
-              ),
-            ),
-            padding: EdgeInsets.all(5.0),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
                 Text(
-                  'Plot Summary',
+                  'Cast & Crew',
                   style: TextStyle(
                     color: kMainLightColor,
                     fontSize: 22.0,
-                    fontFamily: 'Teko_Bold',
-                  ),
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Text(
-                  'Battle-hardened O’Hara leads a lively mercenary team of soldiers on a daring mission: rescue hostages from their captors in remote Africa. But as the mission goes awry and the team is stranded, O’Hara’s squad must face a bloody, brutal encounter with a gang of rebels.',
-                  style: TextStyle(
-                    color: kSecondLightColor,
-                    fontSize: 16.0,
-                    fontFamily: 'Teko_Regular',
+                    fontFamily: 'Teko_Medium',
                   ),
                 ),
               ],
             ),
           ),
-          Text(
-            'Cast & Crew',
-            style: TextStyle(
-              color: kMainLightColor,
-              fontSize: 22.0,
-              fontFamily: 'Teko_Medium',
-            ),
+          CategoryElement(),
+          Image.asset(
+            'images/logo.png',
+            height: 200,
           ),
-          Padding(
-            padding: EdgeInsets.only(top: 10.0, bottom: 70.0),
-            child: CategoryElement(),
-          )
         ],
       ),
     );

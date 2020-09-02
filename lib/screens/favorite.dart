@@ -24,173 +24,108 @@ class FavoritePage extends StatelessWidget {
       width: _screenSize.width,
       height: _screenSize.height,
       color: kMainDarkColor,
-      child: _screenOrientation == Orientation.portrait
-          ? PortraitOrientationView(screenSize: _screenSize)
-          : LandscapeOrientationView(screenSize: _screenSize),
-    );
-  }
-}
-
-class LandscapeOrientationView extends StatelessWidget {
-  const LandscapeOrientationView({
-    Key key,
-    @required Size screenSize,
-  })  : _screenSize = screenSize,
-        super(key: key);
-
-  final Size _screenSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Container(
-          alignment: Alignment.center,
-          width: _screenSize.width,
-          height: _screenSize.height * 0.9,
-          child: Swiper(
-            duration: 2000,
-            autoplayDelay: 5000,
-            fade: 0.1,
-            autoplay: true,
-            itemCount: imgList.length,
-            viewportFraction: 0.75,
-            scale: 0.8,
-            itemBuilder: (context, int index) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  ClipRRect(
-                    child: Image.network(
-                      imgList[index],
-                      fit: BoxFit.cover,
-                      height: _screenSize.height * 0.75,
-                      width: _screenSize.width * 0.55,
-                    ),
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      Text(
-                        "Movie # $index bbk hjkhk jkhjkhkjhkjh",
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: kMainLightColor,
-                          fontSize: 35.0,
-                          fontFamily: 'Teko_Medium',
-                        ),
+      child: ListView(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(left: 10.0),
+            child: Text(
+              'Favorite',
+              style: TextStyle(
+                  color: kMainLightColor.withOpacity(0.7),
+                  fontSize: 35.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Teko_Bold',
+                  letterSpacing: 1.2),
+            ),
+          ),
+          Container(
+            height: _screenOrientation == Orientation.portrait
+                ? _screenSize.height * 0.8
+                : _screenSize.height,
+            child: Swiper(
+              duration: 2000,
+              autoplayDelay: 5000,
+              fade: 0.1,
+              autoplay: true,
+              itemBuilder: (context, int index) {
+                return Column(
+                  children: <Widget>[
+                    ClipRRect(
+                      child: Image.network(
+                        imgList[index],
+                        fit: BoxFit.cover,
+                        height: _screenSize.height * 0.6,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            Icons.star_border,
-                            color: kGoldInkColor,
-                          ),
-                          Text(
-                            '8.9',
-                            style: TextStyle(
-                              color: kMainLightColor,
-                              fontFamily: 'Teko_Medium',
-                              fontSize: 22.0,
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    Text(
+                      "Movie # $index",
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: kMainLightColor,
+                        fontSize: 35.0,
+                        fontFamily: 'Teko_Medium',
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            Icon(
+                              Icons.star,
+                              color: kGoldInkColor,
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              );
-            },
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class PortraitOrientationView extends StatelessWidget {
-  const PortraitOrientationView({
-    Key key,
-    @required Size screenSize,
-  })  : _screenSize = screenSize,
-        super(key: key);
-
-  final Size _screenSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: EdgeInsets.only(left: 10.0),
-          child: Text(
-            'Favorite',
-            style: TextStyle(
-                color: kMainLightColor.withOpacity(0.7),
-                fontSize: 35.0,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Teko_Bold',
-                letterSpacing: 1.2),
-          ),
-        ),
-        Container(
-          height: _screenSize.height * 0.8,
-          child: Swiper(
-            duration: 2000,
-            autoplayDelay: 5000,
-            fade: 0.1,
-            autoplay: true,
-            itemBuilder: (context, int index) {
-              return Column(
-                children: <Widget>[
-                  ClipRRect(
-                    child: Image.network(
-                      imgList[index],
-                      fit: BoxFit.cover,
-                      height: _screenSize.height * 0.6,
-                    ),
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  Text(
-                    "Movie # $index",
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: kMainLightColor,
-                      fontSize: 35.0,
-                      fontFamily: 'Teko_Medium',
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.star_border,
-                        color: kGoldInkColor,
-                      ),
-                      Text(
-                        '8.9',
-                        style: TextStyle(
-                          color: kMainLightColor,
-                          fontFamily: 'Teko_Medium',
-                          fontSize: 22.0,
+                            RichText(
+                              text: TextSpan(
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      text: '8.9',
+                                      style: TextStyle(
+                                        fontSize: 20.0,
+                                        fontFamily: 'Teko_Medium',
+                                        color: kMainLightColor,
+                                      )),
+                                  TextSpan(
+                                      text: '/10',
+                                      style: TextStyle(
+                                        fontSize: 18.0,
+                                        fontFamily: 'Teko_Regular',
+                                        color: kSecondLightColor,
+                                      )),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              );
-            },
-            itemCount: imgList.length,
-            viewportFraction: 0.75,
-            scale: 0.8,
+                        Column(
+                          children: <Widget>[
+                            Icon(
+                              Icons.portrait,
+                              color: Colors.greenAccent,
+                            ),
+                            Text(
+                              '1196.276',
+                              style: TextStyle(
+                                color: kMainLightColor,
+                                fontFamily: 'Teko_Medium',
+                                fontSize: 20.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                );
+              },
+              itemCount: imgList.length,
+              viewportFraction: 0.75,
+              scale: 0.8,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

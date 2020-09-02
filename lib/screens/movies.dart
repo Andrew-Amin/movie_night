@@ -101,24 +101,36 @@ class _MoviesPageState extends State<MoviesPage> {
                       Padding(
                         padding: EdgeInsets.only(left: 10.0),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Text(
-                              'Movies',
-                              style: TextStyle(
-                                  color: kMainLightColor.withOpacity(0.8),
-                                  fontSize: 35.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Teko_Bold',
-                                  letterSpacing: 1.2),
+                            RichText(
+                              text: TextSpan(
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: 'Movies',
+                                    style: TextStyle(
+                                        color: kMainLightColor,
+                                        fontSize: 35.0,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Teko_Bold',
+                                        letterSpacing: 1.2),
+                                  ),
+                                  TextSpan(
+                                    text: ' / $_selectedCategory',
+                                    style: TextStyle(
+                                        color: kMainLightColor.withOpacity(0.7),
+                                        fontSize: 25.0,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Teko_Medium',
+                                        letterSpacing: 1.2),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text(
-                              '/ $_selectedCategory',
-                              style: TextStyle(
-                                  color: kMainLightColor.withOpacity(0.7),
-                                  fontSize: 25.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Teko_Bold',
-                                  letterSpacing: 1.2),
+                            Icon(
+                              Icons.more_vert,
+                              color: kMainLightColor,
+                              size: 25.0,
                             ),
                           ],
                         ),
@@ -179,10 +191,11 @@ class _MoviesPageState extends State<MoviesPage> {
             ),
           ),
           SliverGrid.extent(
-            crossAxisSpacing: 3,
-            mainAxisSpacing: 3,
-            maxCrossAxisExtent: _screenSize.width / 3,
+            crossAxisSpacing: 4,
+            mainAxisSpacing: 4,
+            maxCrossAxisExtent: _screenSize.width / 2,
             children: <Widget>[
+              //todo : implement a stream builder
               MovieCard(
                 imageUrl:
                     'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
@@ -228,12 +241,8 @@ class _MoviesPageState extends State<MoviesPage> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                return Column(
-                  children: <Widget>[
-                    Image.asset(
-                      'images/logo.png',
-                    ),
-                  ],
+                return Image.asset(
+                  'images/logo.png',
                 );
               },
               childCount: 1,

@@ -170,12 +170,8 @@ class _TvShowsPageState extends State<TvShowsPage> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                return Column(
-                  children: <Widget>[
-                    Image.asset(
-                      'images/logo.png',
-                    ),
-                  ],
+                return Image.asset(
+                  'images/logo.png',
                 );
               },
               childCount: 1,
