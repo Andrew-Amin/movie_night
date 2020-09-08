@@ -1,17 +1,25 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:movie_night/Models/showCategory.dart';
 import 'package:movie_night/utils/constants.dart';
 
 class ApiController {
-  dynamic getCategories() async {
+  Future<List<ShowCategory>> getCategories() async {
     try {
       Response _response = await Dio().get(kMovieGenre);
-      if (_response.statusCode == 200)
-        return jsonDecode(_response.data).toString();
+      return _response.data;
     } catch (e) {
       print(e.toString());
       return null;
     }
+  }
+
+  List<ShowCategory> parsePhotos(String responseBody) {
+    final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
+
+    return parsed
+        .map<ShowCategory>((json) => ShowCategory.fromJson(json))
+        .toList();
   }
 
   dynamic getPopularMovies() async {

@@ -21,11 +21,11 @@ class _CategoryElementState extends State<CategoryElement> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return SizedBox(
-            width: 110.0,
+            width: 100.0,
             child: Column(
               children: <Widget>[
                 CircleAvatar(
-                  radius: 50.0,
+                  radius: 45.0,
                   backgroundImage: NetworkImage(
                     'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
                   ),

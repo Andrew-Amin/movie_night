@@ -1,18 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_night/Data/API.dart';
 import 'package:movie_night/utils/constants.dart';
 
 typedef ValueChanged<T> = void Function(T value);
 
 class CategorySelector extends StatefulWidget {
   CategorySelector({
-    @required this.categories,
     this.height = 50,
     this.onClick,
+    this.categories,
   });
-  final List<String> categories;
+
   final double height;
   final ValueChanged<String> onClick;
+  final List categories;
   @override
   _CategorySelectorState createState() => _CategorySelectorState();
 }

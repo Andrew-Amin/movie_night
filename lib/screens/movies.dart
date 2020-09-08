@@ -175,7 +175,6 @@ class _MoviesPageState extends State<MoviesPage> {
                         ),
                       ),
                       CategorySelector(
-                        categories: _categories,
                         height: 50,
                         onClick: (selectedCategory) {
                           setState(() {
@@ -241,9 +240,7 @@ class _MoviesPageState extends State<MoviesPage> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                return Image.asset(
-                  'images/logo.png',
-                );
+                return;
               },
               childCount: 1,
             ),

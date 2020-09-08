@@ -110,7 +110,6 @@ class _TvShowsPageState extends State<TvShowsPage> {
                         ),
                       ),
                       CategorySelector(
-                        categories: _categories,
                         height: 50,
                       ),
                     ],
