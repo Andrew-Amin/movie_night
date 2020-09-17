@@ -31,7 +31,7 @@ class _MoviesSwiperState extends State<MoviesSwiper> {
               children: <Widget>[
                 Image.network(
                   widget.imgList[index],
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
                 Positioned(
                   bottom: 10,
