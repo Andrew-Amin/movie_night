@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:movie_night/Data/API.dart';
+import 'package:movie_night/Data/apiController.dart';
 import '../utils/constants.dart';
 
 final List<String> imgList = [

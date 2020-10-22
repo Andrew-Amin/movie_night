@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:movie_night/utils/constants.dart';
 
 class MovieCard extends StatefulWidget {
-  final String imageUrl;
+  final ImageProvider image;
   const MovieCard({
-    @required this.imageUrl,
+    @required this.image,
   });
   @override
   _MovieCardState createState() => _MovieCardState();
@@ -42,7 +42,7 @@ class _MovieCardState extends State<MovieCard> {
         color: kSecondDarkColor,
         borderRadius: BorderRadius.circular(7.0),
         image: DecorationImage(
-          image: NetworkImage(widget.imageUrl),
+          image: widget.image,
           fit: BoxFit.cover,
         ),
       ),

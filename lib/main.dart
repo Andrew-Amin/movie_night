@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'widgets/bottom_navigation.dart';
-import 'screens/movies.dart';
+import 'screens/movies/movies.dart';
 import 'screens/favorite.dart';
 import 'screens/search.dart';
 import 'screens/tv_shows.dart';

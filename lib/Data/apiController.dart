@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:movie_night/Models/categories.dart';
+import 'package:movie_night/Models/movie.dart';
+import 'package:movie_night/Models/movies.dart';
 import 'package:movie_night/utils/constants.dart';
 
 class ApiController {
@@ -8,7 +10,6 @@ class ApiController {
     try {
       Response _response = await Dio().get(kMovieGenre);
       if (_response.statusCode == 200) {
-        // print(_response.data.toString());
         return Categories.fromJson(_response.data);
       } else {
         return null;
@@ -19,39 +20,59 @@ class ApiController {
     }
   }
 
-  dynamic getPopularMovies() async {
+  Future<Movie> getPopularMovies() async {
     try {
       Response _response = await Dio().get(kPopularMovies);
-      if (_response.statusCode == 200) return jsonDecode(_response.data);
+      if (_response.statusCode == 200) {
+        return Movie.fromJson(_response.data);
+      } else {
+        return null;
+      }
     } catch (e) {
       print(e.toString());
+      return null;
     }
   }
 
-  dynamic getTopRatedMovies() async {
+  Future<Movie> getTopRatedMovies() async {
     try {
       Response _response = await Dio().get(kTopRatedMovies);
-      if (_response.statusCode == 200) return jsonDecode(_response.data);
+      if (_response.statusCode == 200) {
+        return Movie.fromJson(_response.data);
+      } else {
+        return null;
+      }
     } catch (e) {
       print(e.toString());
+      return null;
     }
   }
 
-  dynamic getUpcomingMovies() async {
+  Future<Movie> getUpcomingMovies() async {
     try {
       Response _response = await Dio().get(kUpcomingMovies);
-      if (_response.statusCode == 200) return jsonDecode(_response.data);
+      if (_response.statusCode == 200) {
+        return Movie.fromJson(_response.data);
+      } else {
+        return null;
+      }
     } catch (e) {
       print(e.toString());
+      return null;
     }
   }
 
-  dynamic getLastMovies() async {
+  Future<Movie> getNewPlayingMovies() async {
     try {
-      Response _response = await Dio().get(kLastMovies);
-      if (_response.statusCode == 200) return jsonDecode(_response.data);
+      Response _response = await Dio().get(kNewPlayingMovies);
+      if (_response.statusCode == 200) {
+        return Movie.fromJson(_response.data);
+      } else {
+        return null;
+      }
     } catch (e) {
       print(e.toString());
+      return null;
     }
   }
 }

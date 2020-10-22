@@ -16,6 +16,9 @@ const kPopularMovies =
 const kTopRatedMovies =
     'https://api.themoviedb.org/3/movie/top_rated?api_key=$kApiKey&language=en-US';
 const kUpcomingMovies =
-    'https://api.themoviedb.org/3/movie/upcoming?api_key=$kApiKey&language=en-US';
+    'https://api.themoviedb.org/3/movie/upcoming?api_key=$kApiKey&language=en-US&page=1';
 const kLastMovies =
     'https://api.themoviedb.org/3/movie/latest?api_key=$kApiKey&language=en-US';
+const kNewPlayingMovies =
+    'https://api.themoviedb.org/3/movie/now_playing?api_key=$kApiKey&language=en-US&page=1';
+const kOriginalPosterBaseURL = 'https://image.tmdb.org/t/p/original/';

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:movie_night/widgets/category_selector.dart';
 import '../utils/constants.dart';
-import 'package:movie_night/widgets/movie_card.dart';
 import 'package:movie_night/widgets/movies_swiper.dart';
 
 final List<String> imgList = [
@@ -30,16 +29,14 @@ class TvShowsPage extends StatefulWidget {
 class _TvShowsPageState extends State<TvShowsPage> {
   int _current = 0;
 
-//  List<String> _categories = [
-//    "Action",
-//    "Anim",
-//    "Drama",
-//    "Romantic",
-//    "Action",
-//    "Anim",
-//    "Drama",
-//    "Romantic",
-//  ];
+  List<String> _categoryList = [
+    'Popular',
+    'Latest',
+    'Top Rated',
+    'Upcoming',
+    'New Playing',
+  ];
+
   @override
   Widget build(BuildContext context) {
     Size _screenSize = MediaQuery.of(context).size;
@@ -111,6 +108,7 @@ class _TvShowsPageState extends State<TvShowsPage> {
                       ),
                       CategorySelector(
                         height: 50,
+                        categoryList: _categoryList,
                       ),
                     ],
                   ),
@@ -123,48 +121,7 @@ class _TvShowsPageState extends State<TvShowsPage> {
             crossAxisSpacing: 3,
             mainAxisSpacing: 3,
             maxCrossAxisExtent: _screenSize.width / 3,
-            children: <Widget>[
-              MovieCard(
-                imageUrl:
-                    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-              ),
-              MovieCard(
-                imageUrl:
-                    'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-              ),
-              MovieCard(
-                imageUrl:
-                    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-              ),
-              MovieCard(
-                imageUrl:
-                    'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-              ),
-              MovieCard(
-                imageUrl:
-                    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-              ),
-              MovieCard(
-                imageUrl:
-                    'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-              ),
-              MovieCard(
-                imageUrl:
-                    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-              ),
-              MovieCard(
-                imageUrl:
-                    'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-              ),
-              MovieCard(
-                imageUrl:
-                    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-              ),
-              MovieCard(
-                imageUrl:
-                    'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-              ),
-            ],
+            children: <Widget>[],
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(

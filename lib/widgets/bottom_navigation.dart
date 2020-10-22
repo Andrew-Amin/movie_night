@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_night/utils/size_config.dart';
 import '../utils/constants.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
