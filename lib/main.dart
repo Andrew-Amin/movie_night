@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_night/utils/size_config.dart';
 import 'widgets/bottom_navigation.dart';
 import 'screens/movies/movies.dart';
 import 'screens/favorite.dart';

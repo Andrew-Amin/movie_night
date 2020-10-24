@@ -36,6 +36,7 @@ class Movie {
     dates = json['dates'] != null ? new Dates.fromJson(json['dates']) : null;
     totalPages = json['total_pages'];
   }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['page'] = this.page;
@@ -49,7 +50,7 @@ class Movie {
 }
 
 class Results {
-  double popularity;
+  var popularity;
   int voteCount;
   bool video;
   String posterPath;
@@ -60,7 +61,7 @@ class Results {
   String originalTitle;
   List<int> genreIds;
   String title;
-  double voteAverage;
+  var voteAverage;
   String overview;
   String releaseDate;
 

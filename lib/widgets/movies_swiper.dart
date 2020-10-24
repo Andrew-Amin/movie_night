@@ -1,14 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:movie_night/Models/movie.dart';
+import 'package:movie_night/utils/constants.dart';
+
+typedef ValueChanged<T> = void Function(T value);
 
 class MoviesSwiper extends StatefulWidget {
   MoviesSwiper(
-      {@required this.imgList,
+      {@required this.moviesList,
       this.onIndexChange,
       this.movieSwiperLayout = SwiperLayout.DEFAULT});
-  final List<String> imgList;
-  final Function onIndexChange;
+  final List<Results> moviesList;
+  final ValueChanged<int> onIndexChange;
   final SwiperLayout movieSwiperLayout;
 
   @override
@@ -30,7 +34,7 @@ class _MoviesSwiperState extends State<MoviesSwiper> {
               fit: StackFit.expand,
               children: <Widget>[
                 Image.network(
-                  widget.imgList[index],
+                  kOriginalPosterBaseURL + widget.moviesList[index].posterPath,
                   fit: BoxFit.cover,
                 ),
                 Positioned(
@@ -38,7 +42,7 @@ class _MoviesSwiperState extends State<MoviesSwiper> {
                   left: 15,
                   width: 200,
                   child: Text(
-                    "movie#$index",
+                    widget.moviesList[index].title,
                     overflow: TextOverflow.fade,
                     style: TextStyle(
                       color: Colors.white,
@@ -50,7 +54,7 @@ class _MoviesSwiperState extends State<MoviesSwiper> {
               ],
             ));
       },
-      itemCount: widget.imgList.length,
+      itemCount: widget.moviesList.length,
       viewportFraction: 0.75,
       scale: 0.9,
       onIndexChanged: widget.onIndexChange,

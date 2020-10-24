@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_night/Models/movie.dart';
-import 'package:movie_night/Models/movies.dart';
 import 'package:movie_night/utils/constants.dart';
 import 'package:movie_night/widgets/movie_card.dart';
 

@@ -21,4 +21,9 @@ const kLastMovies =
     'https://api.themoviedb.org/3/movie/latest?api_key=$kApiKey&language=en-US';
 const kNewPlayingMovies =
     'https://api.themoviedb.org/3/movie/now_playing?api_key=$kApiKey&language=en-US&page=1';
+const kTrendingMovies =
+    'https://api.themoviedb.org/3/trending/movie/day?api_key=$kApiKey';
+const kTrendingTv =
+    'https://api.themoviedb.org/3/trending/t v/day?api_key=$kApiKey';
+
 const kOriginalPosterBaseURL = 'https://image.tmdb.org/t/p/original/';

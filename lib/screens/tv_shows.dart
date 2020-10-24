@@ -66,22 +66,14 @@ class _TvShowsPageState extends State<TvShowsPage> {
                               letterSpacing: 1.2),
                         ),
                       ),
-                      Container(
-                        margin:
-                            EdgeInsets.symmetric(horizontal: 0, vertical: 5.0),
-                        height: _screenOrientation == Orientation.portrait
-                            ? _screenSize.height / 4
-                            : _screenSize.height / 2,
-                        child: MoviesSwiper(
-                          imgList: imgList,
-                          movieSwiperLayout: SwiperLayout.STACK,
-                          onIndexChange: (index) {
-                            setState(() {
-                              _current = index;
-                            });
-                          },
-                        ),
-                      ),
+//                      Container(
+//                        margin:
+//                            EdgeInsets.symmetric(horizontal: 0, vertical: 5.0),
+//                        height: _screenOrientation == Orientation.portrait
+//                            ? _screenSize.height / 4
+//                            : _screenSize.height / 2,
+//
+//                      ),
                       SizedBox(
                         height: _screenSize.height * 0.030,
                         child: Row(

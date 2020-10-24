@@ -14,7 +14,7 @@ dependencies:
   curved_navigation_bar: ^0.3.3
   dio: ^3.0.10
   flutter_swiper: ^1.1.6
-  shared_preferences: ^0.5.10
+  after_init: ^0.1.2
 
 
 dev_dependencies:
