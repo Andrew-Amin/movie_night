@@ -34,7 +34,7 @@ class _MoviesSwiperState extends State<MoviesSwiper> {
               fit: StackFit.expand,
               children: <Widget>[
                 Image.network(
-                  kOriginalPosterBaseURL + widget.moviesList[index].posterPath,
+                  kCroppedPosterBaseURL + widget.moviesList[index].posterPath,
                   fit: BoxFit.cover,
                 ),
                 Positioned(

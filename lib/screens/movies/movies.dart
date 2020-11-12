@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'file:///C:/Users/Other/Desktop/projects/movie_night/lib/screens/movies/components/trending_movies_swiper.dart';
+
 import 'package:flutter/material.dart';
 import 'package:movie_night/Data/apiController.dart';
 import 'package:movie_night/Models/movie.dart';
@@ -10,6 +10,7 @@ import 'package:movie_night/widgets/page_header.dart';
 
 import 'components/footer.dart';
 import 'components/movie_grid.dart';
+import 'components/trending_movies_swiper.dart';
 
 class MoviesPage extends StatefulWidget {
   @override
@@ -27,6 +28,7 @@ class _MoviesPageState extends State<MoviesPage> {
   ApiController _apiController = ApiController();
   Future<Movie> _movieFuture;
   bool _showMore = false;
+  int pageNumber = 1;
   @override
   void initState() {
     // TODO: implement initState
@@ -46,7 +48,7 @@ class _MoviesPageState extends State<MoviesPage> {
           MoviesGrid(future: _movieFuture),
           SliverPageFooter(
             onClick: () => _loadMoreMovies(),
-            show: false,
+            show: true,
           )
         ],
       ),

@@ -9,8 +9,8 @@ class SliverPageFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildListDelegate([
-        GestureDetector(
-          onTap: () => onClick,
+        FlatButton(
+          onPressed: onClick,
           child: show
               ? Text(
                   'ـــــــــــــــ more ـــــــــــــــ',

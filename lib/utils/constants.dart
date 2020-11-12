@@ -26,4 +26,6 @@ const kTrendingMovies =
 const kTrendingTv =
     'https://api.themoviedb.org/3/trending/t v/day?api_key=$kApiKey';
 
+const kCroppedPosterBaseURL = 'https://image.tmdb.org/t/p/w200/';
+
 const kOriginalPosterBaseURL = 'https://image.tmdb.org/t/p/original/';

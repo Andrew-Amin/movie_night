@@ -32,7 +32,7 @@ class MoviesGrid extends StatelessWidget {
               itemBuilder: (context, index) {
                 return MovieCard(
                     image: (snapshot.data.results[index].posterPath != null)
-                        ? NetworkImage(kOriginalPosterBaseURL +
+                        ? NetworkImage(kCroppedPosterBaseURL +
                             snapshot.data.results[index].posterPath)
                         : AssetImage('images/placeholder.png'));
               },
