@@ -1,25 +1,23 @@
+import '../utils/constants.dart';
+
 class RequestUrl {
-  String apiKey;
-
-  RequestUrl(this.apiKey);
-
-  String popularMoviesUrl(pageNumber) {
-    return 'https://api.themoviedb.org/3/movie/popular?api_key=$apiKey&language=en-US&page=$pageNumber';
+  static String popularMoviesUrl(int pageNumber) {
+    return 'https://api.themoviedb.org/3/movie/popular?api_key=$kApiKey&language=en-US&page=$pageNumber';
   }
 
-  String topRatedMoviesUrl(pageNumber) {
-    return 'https://api.themoviedb.org/3/movie/top_rated?api_key=$apiKey&language=en-US&page=$pageNumber';
+  static String topRatedMoviesUrl(int pageNumber) {
+    return 'https://api.themoviedb.org/3/movie/top_rated?api_key=$kApiKey&language=en-US&page=$pageNumber';
   }
 
-  String upcomingMoviesUrl(pageNumber) {
-    return 'https://api.themoviedb.org/3/movie/upcoming?api_key=$apiKey&language=en-US&page=$pageNumber';
+  static String upcomingMoviesUrl(int pageNumber) {
+    return 'https://api.themoviedb.org/3/movie/upcoming?api_key=$kApiKey&language=en-US&page=$pageNumber';
   }
 
-  String lastMoviesUrl(pageNumber) {
-    return 'https://api.themoviedb.org/3/movie/latest?api_key=$apiKey&language=en-US&page=$pageNumber';
+  static String lastMoviesUrl(int pageNumber) {
+    return 'https://api.themoviedb.org/3/movie/latest?api_key=$kApiKey&language=en-US&page=$pageNumber';
   }
 
-  String newPlayingMoviesUrl(pageNumber) {
-    return 'https://api.themoviedb.org/3/movie/now_playing?api_key=$apiKey&language=en-US&page=$pageNumber';
+  static String newPlayingMoviesUrl(int pageNumber) {
+    return 'https://api.themoviedb.org/3/movie/now_playing?api_key=$kApiKey&language=en-US&page=$pageNumber';
   }
 }

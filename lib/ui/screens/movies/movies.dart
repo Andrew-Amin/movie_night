@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
+
 import 'package:movie_night/Data/apiController.dart';
+import 'package:movie_night/Data/request_url.dart';
 import 'package:movie_night/Models/movie.dart';
+import 'package:movie_night/ui/global/widgets/category_selector.dart';
+import 'package:movie_night/ui/global/widgets/page_header.dart';
 import 'package:movie_night/utils/constants.dart';
 import 'package:movie_night/utils/size_config.dart';
-import 'package:movie_night/widgets/category_selector.dart';
-import 'package:movie_night/widgets/page_header.dart';
 
 import 'components/footer.dart';
 import 'components/movie_grid.dart';
@@ -29,6 +30,7 @@ class _MoviesPageState extends State<MoviesPage> {
   Future<Movie> _movieFuture;
   bool _showMore = false;
   int pageNumber = 1;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -86,20 +88,24 @@ class _MoviesPageState extends State<MoviesPage> {
 
   Future<Movie> _selectMoviesCategory(String category) {
     switch (category) {
-      case 'Popular':
-        return _apiController.getMoviesByCategory(kPopularMovies);
       case 'Top Rated':
-        return _apiController.getMoviesByCategory(kTopRatedMovies);
+        return _apiController
+            .getMoviesByCategory(RequestUrl.topRatedMoviesUrl(pageNumber));
       case 'Upcoming':
-        return _apiController.getMoviesByCategory(kUpcomingMovies);
+        return _apiController
+            .getMoviesByCategory(RequestUrl.upcomingMoviesUrl(pageNumber));
       case 'New Playing':
-        return _apiController.getMoviesByCategory(kNewPlayingMovies);
+        return _apiController
+            .getMoviesByCategory(RequestUrl.newPlayingMoviesUrl(pageNumber));
       default:
-        return null;
+        return _apiController
+            .getMoviesByCategory(RequestUrl.popularMoviesUrl(pageNumber));
     }
   }
 
   void _loadMoreMovies() {
-    print("it's working");
+    setState(() {
+      pageNumber++;
+    });
   }
 }

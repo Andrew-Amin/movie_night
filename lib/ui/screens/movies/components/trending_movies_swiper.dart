@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_night/Models/movie.dart';
+import 'package:movie_night/ui/global/widgets/index_indicator.dart';
+import 'package:movie_night/ui/global/widgets/movies_swiper.dart';
 import 'package:movie_night/utils/size_config.dart';
-import 'package:movie_night/widgets/movies_swiper.dart';
-import 'package:movie_night/widgets/index_indicator.dart';
 
 class TrendingMoviesSwiper extends StatefulWidget {
   final Future future;

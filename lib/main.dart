@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movie_night/utils/size_config.dart';
-import 'widgets/bottom_navigation.dart';
-import 'screens/movies/movies.dart';
-import 'screens/favorite.dart';
-import 'screens/search.dart';
-import 'screens/tv_shows.dart';
-import 'screens/details.dart';
+
+import 'ui/global/widgets/bottom_navigation.dart';
+import 'ui/screens/details/details.dart';
+import 'ui/screens/favorite.dart';
+import 'ui/screens/movies/movies.dart';
+import 'ui/screens/tv_shows.dart';
 
 void main() => runApp(App());
 

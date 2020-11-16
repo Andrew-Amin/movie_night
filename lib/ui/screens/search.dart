@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../utils/constants.dart';
+import 'package:movie_night/utils/constants.dart';
 
 class SearchPage extends StatelessWidget {
   @override
