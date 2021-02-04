@@ -1,5 +1,11 @@
-# movie_night
-### A Flutter movie app build with [TMDB API, Provider pattern, MVVM,  Dio package, and Floor]
+# Movie Kight
+### A Flutter movie preview app build with [TMDB API, Provider pattern, MVVM,  Dio package, and Floor] with functionalities such as:
+* Rating and create favorite and watchlist 
+* Authentication : OAuth2 (session id)
+* Search Movies or TV shows by name or keywords
+* Preview the show details and its cast
+* and more ...
+
 
 <p align="left" width="100%">
   <img src="Screenshot_20210205-000836.png" width="300">
