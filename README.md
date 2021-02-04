@@ -1,6 +1,6 @@
 # movie_night
 
-A new Flutter application.
+A Flutter movie app build with [TMDB API, Provider pattern, MVVM,  Dio package, and Floor]
 
 ## Getting Started
 
