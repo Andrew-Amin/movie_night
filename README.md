@@ -1,7 +1,15 @@
 # movie_night
+### A Flutter movie app build with [TMDB API, Provider pattern, MVVM,  Dio package, and Floor]
 
-A Flutter movie app build with [TMDB API, Provider pattern, MVVM,  Dio package, and Floor]
-
+<p align="left" width="100%">
+  <img src="Screenshot_20210205-000836.png" width="300">
+  <img src="Screenshot_20210205-000856.png" width="300">
+</p>
+<p align="left" width="100%">
+  <img src="Screenshot_20210205-000909.png" width="300">
+  <img src="Screenshot_20210205-000927.png" width="300">
+</p>
+<img src="Screenshot_20210205-001012.png" width="300">
 ## Getting Started
 
 This project is a starting point for a Flutter application.
